@@ -1,0 +1,49 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Sample data
+years = list(range(2020, 2025))
+gold_prices = [1895.10, 1828.60, 1824.32, 2062.92, 2684.55]
+usd_to_eur = [0.83, 0.85, 0.92, 0.94, 0.96]
+thb_to_usd = [0.032, 0.031, 0.027, 0.028, 0.029]
+brk_a_prices = [347815, 450662, 468710, 542625, 688252]
+
+# Create a DataFrame
+data = {
+    'Year': years,
+    'Gold Prices (USD/oz)': gold_prices,
+    'USD to EUR': usd_to_eur,
+    'THB to USD': thb_to_usd,
+    'Berkshire Hathaway (BRK.A)': brk_a_prices
+}
+df = pd.DataFrame(data)
+
+# Plotting
+fig, axs = plt.subplots(2, 2, figsize=(15, 10))
+
+# Gold Prices
+axs[0, 0].plot(df['Year'], df['Gold Prices (USD/oz)'], marker='o')
+axs[0, 0].set_title('Gold Prices (USD/oz)')
+axs[0, 0].set_xlabel('Year')
+axs[0, 0].set_ylabel('Price (USD)')
+
+# USD to EUR
+axs[0, 1].plot(df['Year'], df['USD to EUR'], marker='o')
+axs[0, 1].set_title('USD to EUR Exchange Rate')
+axs[0, 1].set_xlabel('Year')
+axs[0, 1].set_ylabel('Exchange Rate')
+
+# THB to USD
+axs[1, 0].plot(df['Year'], df['THB to USD'], marker='o')
+axs[1, 0].set_title('THB to USD Exchange Rate')
+axs[1, 0].set_xlabel('Year')
+axs[1, 0].set_ylabel('Exchange Rate')
+
+# Berkshire Hathaway Stock Prices
+axs[1, 1].plot(df['Year'], df['Berkshire Hathaway (BRK.A)'], marker='o')
+axs[1, 1].set_title('Berkshire Hathaway (BRK.A) Stock Prices')
+axs[1, 1].set_xlabel('Year')
+axs[1, 1].set_ylabel('Price (USD)')
+
+plt.tight_layout()
+plt.show()
